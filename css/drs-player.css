@@ -9,6 +9,13 @@
           user-select: none;
 }
 
+.drs-player * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .drs-player button {
   outline-color: #555;
 }
@@ -257,7 +264,7 @@
 }
 
 .drs-player div.drs-controls .drs-info {
-  padding: 0.8rem 1rem;
+  padding: 0.9rem 1rem;
   color: #eee;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
   font-family: Arial;
@@ -318,6 +325,7 @@
 .drs-player div.drs-controls .drs-dynamic-thumbnail {
   position: absolute;
   bottom: 50px;
+  border-radius: 5px;
   opacity: 0;
   pointer-events: none;
 }
