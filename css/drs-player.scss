@@ -1,0 +1,315 @@
+.drs-player {
+  position: relative;
+  width: fit-content;
+  user-select: none;
+  button {
+    outline-color: #555;
+  }
+  video {
+    width: 100%;
+    display: block;
+  }
+  .drs-tp {
+    // Top pannel
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 300px;
+    height: 40px;
+    text-shadow: 0 0 3px rgba(20, 20, 20, 0.3);
+    transition: 0.2s ease-in-out;
+    opacity: 0;
+    & > * {
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      float: left;
+      // margin-right: 5px;
+      // border-radius: 5px;
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #eee;
+      &::before {
+        width: 30px;
+        height: 30px;
+        font-size: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 100;
+        font-family: "Material Icons", "Material Icons Outlined",
+          "Material Icons Round", "Material Icons Sharp",
+          "Material Icons Two Tone";
+      }
+      &:hover {
+        &::before {
+          color: #444;
+        }
+      }
+      &.active,
+      &.active:hover {
+        &::before {
+          color: #ff9e9e;
+        }
+      }
+      &:disabled {
+        cursor: default;
+        &::before {
+          color: #999;
+        }
+      }
+      &:first-child {
+        border-radius: 5px 0 0 5px;
+      }
+      &:last-child {
+        border-radius: 0 5px 5px 0;
+      }
+    }
+    .drs-tp--playpause {
+      &.playing {
+        &::before {
+          content: "\e034";
+        }
+      }
+      &.paused {
+        &::before {
+          content: "\e037";
+        }
+      }
+    }
+    .drs-tp--pip {
+      &::before {
+        content: "\e911";
+      }
+    }
+    .drs-tp--fullscreen {
+      &.active {
+        &::before {
+          content: "\e5d1";
+        }
+      }
+      &.deactive {
+        &::before {
+          content: "\e5d0";
+        }
+      }
+    }
+
+    .drs-playback {
+      &::before {
+        content: "\e068";
+      }
+    }
+    .drs-volume {
+      &::before {
+        content: "\e050";
+      }
+    }
+  }
+  .drs-tp-options {
+    position: absolute;
+    left: 10px;
+    top: 50px;
+    border-radius: 5px;
+    color: #fff;
+
+    .drs-options {
+      display: none;
+      opacity: 0;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 5px;
+      margin-top: 5px;
+      transform: translateY(10px);
+      transition: all 0.2s ease-in-out;
+    }
+    .drs-volume-slider {
+      cursor: pointer;
+      position: relative;
+      width: 100px;
+      height: 30px;
+      cursor: pointer;
+      overflow: hidden;
+      .drs-volume-slider--handle {
+        position: absolute;
+        left: 88px;
+        top: calc(50% - 6px);
+        width: 12px;
+        height: 12px;
+        border-radius: 6px;
+        background: #fff;
+        &::before,
+        &::after {
+          position: absolute;
+          content: "";
+          width: 100px;
+          height: 4px;
+          top: 4px;
+        }
+        &::before {
+          right: 100%;
+          background: #fff;
+        }
+        &::after {
+          left: 100%;
+          background: #aaa;
+        }
+      }
+      &.active {
+        display: flex;
+      }
+    }
+
+    .drs-playback-options {
+      align-items: center;
+      justify-content: space-between;
+      option {
+        flex-basis: 60px;
+        width: 60px;
+        text-align: center;
+        padding: 0.5rem 0;
+        cursor: pointer;
+        font-family: monospace;
+        text-shadow: 0 0 5px #222;
+        border-bottom: 2px solid transparent;
+        transition: 0.1s ease-in;
+        &.active {
+          color: #444;
+          border-bottom-color: #444;
+        }
+        &:hover {
+          border-bottom-color: #444;
+        }
+      }
+      &.active {
+        display: flex;
+      }
+    }
+  }
+  div.drs-controls {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: calc(100% - 20px);
+    border-radius: 5px;
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.6) 10px,
+      rgba(0, 0, 0, 0.2) 10px
+    );
+    transition: 0.2s ease-in-out;
+    opacity: 0;
+    text-align: center;
+    .drs-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 10px;
+      border-radius: 0 5px 5px 0;
+      background: #ff4e6c;
+      &::after {
+        content: "";
+        position: absolute;
+        right: -5px;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        background: #ff4e6c;
+        box-shadow: -3px 0 3px -3px #111;
+        border-radius: 10px;
+        transform: scale(1.5);
+      }
+    }
+    .drs-info {
+      padding: 0.8rem 1rem;
+      color: #eee;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+      font-family: Arial;
+      display: flex;
+      justify-content: space-between;
+      line-height: 15px;
+      .drs-info-totalduration {
+        pointer-events: none;
+        font-family: monospace;
+        display: flex;
+        align-items: center;
+        &::before {
+          content: "\e425";
+          font-family: "Material Icons", "Material Icons Outlined",
+            "Material Icons Round", "Material Icons Sharp",
+            "Material Icons Two Tone";
+          margin-right: 5px;
+        }
+      }
+      .drs-info-progressduration {
+        pointer-events: none;
+        font-family: monospace;
+      }
+    }
+    .drs-progress--hover {
+      position: absolute;
+      bottom: 0;
+      height: 100%;
+      width: 1px;
+      background: #ccc;
+      pointer-events: none;
+      overflow: visible;
+      opacity: 0;
+      &::after {
+        content: attr(data-time);
+        position: absolute;
+        left: calc(100% + 2px);
+        bottom: 0;
+        font-family: monospace;
+        background: rgba(20, 20, 20, 0.3);
+        border-radius: 2px;
+        padding: 1px 2px;
+        color: #fff;
+      }
+    }
+    .drs-dynamic-thumbnail {
+      position: absolute;
+      bottom: 50px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    &:hover {
+      .drs-progress--hover {
+        opacity: 1;
+      }
+    }
+  }
+  .drs-indicator {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 70px;
+    height: 70px;
+    pointer-events: none;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+    opacity: 0;
+    &::after {
+      font-family: "Material Icons", "Material Icons Outlined",
+        "Material Icons Round", "Material Icons Sharp",
+        "Material Icons Two Tone";
+      font-size: 70px;
+      line-height: 70px;
+      color: #fff;
+      text-shadow: 0 0 5px rgba(20, 20, 20, 0.3);
+    }
+    &.paused {
+      &::after {
+        content: "\e1c4";
+      }
+    }
+    &.playing {
+      &::after {
+        content: "\e1a2";
+      }
+    }
+  }
+}

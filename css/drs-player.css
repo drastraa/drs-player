@@ -1,0 +1,358 @@
+.drs-player {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.drs-player button {
+  outline-color: #555;
+}
+
+.drs-player video {
+  width: 100%;
+  display: block;
+}
+
+.drs-player .drs-tp {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 300px;
+  height: 40px;
+  text-shadow: 0 0 3px rgba(20, 20, 20, 0.3);
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  opacity: 0;
+}
+
+.drs-player .drs-tp > * {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  float: left;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #eee;
+}
+
+.drs-player .drs-tp > *::before {
+  width: 30px;
+  height: 30px;
+  font-size: 26px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 100;
+  font-family: "Material Icons", "Material Icons Outlined", "Material Icons Round", "Material Icons Sharp", "Material Icons Two Tone";
+}
+
+.drs-player .drs-tp > *:hover::before {
+  color: #444;
+}
+
+.drs-player .drs-tp > *.active::before, .drs-player .drs-tp > *.active:hover::before {
+  color: #ff9e9e;
+}
+
+.drs-player .drs-tp > *:disabled {
+  cursor: default;
+}
+
+.drs-player .drs-tp > *:disabled::before {
+  color: #999;
+}
+
+.drs-player .drs-tp > *:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.drs-player .drs-tp > *:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.drs-player .drs-tp .drs-tp--playpause.playing::before {
+  content: "\e034";
+}
+
+.drs-player .drs-tp .drs-tp--playpause.paused::before {
+  content: "\e037";
+}
+
+.drs-player .drs-tp .drs-tp--pip::before {
+  content: "\e911";
+}
+
+.drs-player .drs-tp .drs-tp--fullscreen.active::before {
+  content: "\e5d1";
+}
+
+.drs-player .drs-tp .drs-tp--fullscreen.deactive::before {
+  content: "\e5d0";
+}
+
+.drs-player .drs-tp .drs-playback::before {
+  content: "\e068";
+}
+
+.drs-player .drs-tp .drs-volume::before {
+  content: "\e050";
+}
+
+.drs-player .drs-tp-options {
+  position: absolute;
+  left: 10px;
+  top: 50px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.drs-player .drs-tp-options .drs-options {
+  display: none;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  margin-top: 5px;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.drs-player .drs-tp-options .drs-volume-slider {
+  cursor: pointer;
+  position: relative;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.drs-player .drs-tp-options .drs-volume-slider .drs-volume-slider--handle {
+  position: absolute;
+  left: 88px;
+  top: calc(50% - 6px);
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.drs-player .drs-tp-options .drs-volume-slider .drs-volume-slider--handle::before, .drs-player .drs-tp-options .drs-volume-slider .drs-volume-slider--handle::after {
+  position: absolute;
+  content: "";
+  width: 100px;
+  height: 4px;
+  top: 4px;
+}
+
+.drs-player .drs-tp-options .drs-volume-slider .drs-volume-slider--handle::before {
+  right: 100%;
+  background: #fff;
+}
+
+.drs-player .drs-tp-options .drs-volume-slider .drs-volume-slider--handle::after {
+  left: 100%;
+  background: #aaa;
+}
+
+.drs-player .drs-tp-options .drs-volume-slider.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.drs-player .drs-tp-options .drs-playback-options {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.drs-player .drs-tp-options .drs-playback-options option {
+  -ms-flex-preferred-size: 60px;
+      flex-basis: 60px;
+  width: 60px;
+  text-align: center;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  font-family: monospace;
+  text-shadow: 0 0 5px #222;
+  border-bottom: 2px solid transparent;
+  -webkit-transition: 0.1s ease-in;
+  transition: 0.1s ease-in;
+}
+
+.drs-player .drs-tp-options .drs-playback-options option.active {
+  color: #444;
+  border-bottom-color: #444;
+}
+
+.drs-player .drs-tp-options .drs-playback-options option:hover {
+  border-bottom-color: #444;
+}
+
+.drs-player .drs-tp-options .drs-playback-options.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.drs-player div.drs-controls {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  width: calc(100% - 20px);
+  border-radius: 5px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 10px, rgba(0, 0, 0, 0.2) 10px);
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  opacity: 0;
+  text-align: center;
+}
+
+.drs-player div.drs-controls .drs-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 10px;
+  border-radius: 0 5px 5px 0;
+  background: #ff4e6c;
+}
+
+.drs-player div.drs-controls .drs-progress::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  background: #ff4e6c;
+  -webkit-box-shadow: -3px 0 3px -3px #111;
+          box-shadow: -3px 0 3px -3px #111;
+  border-radius: 10px;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+.drs-player div.drs-controls .drs-info {
+  padding: 0.8rem 1rem;
+  color: #eee;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  font-family: Arial;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  line-height: 15px;
+}
+
+.drs-player div.drs-controls .drs-info .drs-info-totalduration {
+  pointer-events: none;
+  font-family: monospace;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.drs-player div.drs-controls .drs-info .drs-info-totalduration::before {
+  content: "\e425";
+  font-family: "Material Icons", "Material Icons Outlined", "Material Icons Round", "Material Icons Sharp", "Material Icons Two Tone";
+  margin-right: 5px;
+}
+
+.drs-player div.drs-controls .drs-info .drs-info-progressduration {
+  pointer-events: none;
+  font-family: monospace;
+}
+
+.drs-player div.drs-controls .drs-progress--hover {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 1px;
+  background: #ccc;
+  pointer-events: none;
+  overflow: visible;
+  opacity: 0;
+}
+
+.drs-player div.drs-controls .drs-progress--hover::after {
+  content: attr(data-time);
+  position: absolute;
+  left: calc(100% + 2px);
+  bottom: 0;
+  font-family: monospace;
+  background: rgba(20, 20, 20, 0.3);
+  border-radius: 2px;
+  padding: 1px 2px;
+  color: #fff;
+}
+
+.drs-player div.drs-controls .drs-dynamic-thumbnail {
+  position: absolute;
+  bottom: 50px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.drs-player div.drs-controls:hover .drs-progress--hover {
+  opacity: 1;
+}
+
+.drs-player .drs-indicator {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  width: 70px;
+  height: 70px;
+  pointer-events: none;
+  text-align: center;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  opacity: 0;
+}
+
+.drs-player .drs-indicator::after {
+  font-family: "Material Icons", "Material Icons Outlined", "Material Icons Round", "Material Icons Sharp", "Material Icons Two Tone";
+  font-size: 70px;
+  line-height: 70px;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(20, 20, 20, 0.3);
+}
+
+.drs-player .drs-indicator.paused::after {
+  content: "\e1c4";
+}
+
+.drs-player .drs-indicator.playing::after {
+  content: "\e1a2";
+}
