@@ -23,6 +23,15 @@
 </div>
 ```
 
+## Support list
+
+- Common controls ()
+- Showing video thumbnail
+  - Thumbnail must be `6*6`: 6 Columns \* 6 Rows of image
+- Fullscreen
+- Picture in Picture
+- fastSeek ([On compatible browsers](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/fastSeek#browser_compatibility "MDN Documentation"))
+
 ## To Do
 
 - [x] PiP
