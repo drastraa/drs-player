@@ -1,3 +1,5 @@
+! The react component of this project is on development.
+There won't be other updates for this repo
 # Guide
 
 1. This video player uses [Google Material Icons](https://fonts.google.com/icons). Any of the icon sets can be used.
